@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090e19"><title>AgentFlow AI</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><div class="brand-mark">✳</div><div><b>AgentFlow</b><small>PERSONAL AI OS</small></div></div>
+    <div class="side-label">WORKSPACE</div>
+    <button class="nav active" data-page="dashboard"><span>▦</span> Overview</button>
+    <button class="nav" data-page="agents"><span>◈</span> AI Agents <em id="agentCount">0</em></button>
+    <button class="nav" data-page="workflows"><span>⌘</span> Workflows <em id="workflowCount">0</em></button>
+    <button class="nav" data-page="runs"><span>◷</span> Execution history</button>
+    <div class="side-bottom"><div class="profile"><div class="avatar">S</div><div><b>Personal workspace</b><small>Local instance</small></div><span class="dot"></span></div><small class="version">AGENTFLOW V1.0.0</small></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><button class="mobile-menu" id="menuBtn">☰</button><div class="crumb">Workspace <span>/</span> <b id="crumb">Overview</b></div><div class="top-actions"><span class="system-status"><i></i><span id="connection">Checking system</span></span><div class="avatar mini">S</div></div></header>
+    <section class="page active" id="page-dashboard">
+      <div class="page-head"><div><div class="eyebrow">YOUR COMMAND CENTER</div><h1>Good to see you<span class="accent">.</span></h1><p>Here’s what’s happening across your AI workspace.</p></div><button class="primary" data-go="workflows">＋ New workflow</button></div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-top"><span>AI AGENTS</span><span class="stat-icon">◈</span></div><strong id="statAgents">0</strong><small>Personal assistants</small></div>
+        <div class="stat-card"><div class="stat-top"><span>WORKFLOWS</span><span class="stat-icon">⌘</span></div><strong id="statWorkflows">0</strong><small>Automation recipes</small></div>
+        <div class="stat-card"><div class="stat-top"><span>EXECUTIONS</span><span class="stat-icon">↗</span></div><strong id="statRuns">0</strong><small>Workflow runs</small></div>
+        <div class="stat-card"><div class="stat-top"><span>SUCCESS RATE</span><span class="stat-icon green">✓</span></div><strong id="statSuccess">100%</strong><small>Successful executions</small></div>
+      </div>
+      <div class="content-grid">
+        <div class="panel"><div class="panel-head"><div><h2>Recent activity</h2><p>Your latest workflow executions</p></div><button class="text-btn" data-go="runs">View all ↗</button></div><div id="recentRuns" class="activity-list"><div class="empty">No executions yet. Run your first workflow.</div></div></div>
+        <div class="panel quick-panel"><div class="panel-head"><div><h2>Quick start</h2><p>Build your AI workspace</p></div></div><button class="quick-action" data-go="agents"><span class="quick-icon purple">◈</span><span><b>Create an agent</b><small>Give your assistant a role</small></span><strong>↗</strong></button><button class="quick-action" data-go="workflows"><span class="quick-icon blue">⌘</span><span><b>Build a workflow</b><small>Automate a repeatable task</small></span><strong>↗</strong></button><button class="quick-action" data-chat><span class="quick-icon green">✳</span><span><b>Talk to AI</b><small>Ask your assistant anything</small></span><strong>↗</strong></button></div>
+      </div>
+      <div class="panel chat-panel"><div class="panel-head"><div><h2>AI command line</h2><p>Chat with your configured AI assistant</p></div><span class="ai-pill">✳ AI ASSISTANT</span></div><div id="chatMessages" class="chat-messages"><div class="chat-bubble assistant">Hi! I’m your AgentFlow assistant. Add your OpenAI API key in the backend to enable AI responses. You can still create and run basic workflows without it.</div></div><form id="chatForm" class="chat-form"><input id="chatInput" placeholder="Ask your assistant something..." autocomplete="off"><button class="primary" type="submit">Send ↑</button></form></div>
+    </section>
+    <section class="page" id="page-agents"><div class="page-head"><div><div class="eyebrow">INTELLIGENT WORKERS</div><h1>AI Agents<span class="accent">.</span></h1><p>Create specialized assistants for your personal workflows.</p></div><button class="primary" id="newAgent">＋ Create agent</button></div><div id="agentsGrid" class="cards-grid"></div></section>
+    <section class="page" id="page-workflows"><div class="page-head"><div><div class="eyebrow">AUTOMATION STUDIO</div><h1>Workflows<span class="accent">.</span></h1><p>Chain safe actions together and run them on demand.</p></div><button class="primary" id="newWorkflow">＋ New workflow</button></div><div id="workflowsGrid" class="cards-grid"></div></section>
+    <section class="page" id="page-runs"><div class="page-head"><div><div class="eyebrow">OBSERVABILITY</div><h1>Execution history<span class="accent">.</span></h1><p>Review workflow outcomes and execution logs.</p></div><button class="secondary" id="refreshRuns">↻ Refresh</button></div><div class="panel"><div id="allRuns" class="activity-list"><div class="empty">No runs recorded yet.</div></div></div></section>
+  </main>
+</div>
+<div class="modal-backdrop" id="modal"><div class="modal"><div class="modal-head"><h2 id="modalTitle">Create agent</h2><button class="icon-btn" id="closeModal">×</button></div><form id="modalForm"><div id="modalFields"></div><div class="modal-actions"><button type="button" class="secondary" id="cancelModal">Cancel</button><button type="submit" class="primary">Save</button></div></form></div></div>
+<div class="toast" id="toast"></div>
+<script src="/static/app.js"></script>
+</body></html>
